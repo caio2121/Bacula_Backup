@@ -19,14 +19,12 @@ Este repositório contém scripts e configurações para automação, gerenciame
 
 Sinta-se à vontade para contribuir com melhorias, correções ou novas funcionalidades. Para isso, basta fazer um fork do repositório e enviar um pull request.
 
-## 📄 Licença
 
-Este projeto está licenciado sob a **Licença MIT**. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
 ## 📞 Contato
 
 Em caso de dúvidas, sinta-se à vontade para abrir uma **issue** ou entrar em contato diretamente.
-
+caioalberto.abreu@gmail.com
 ---
 
 🔧 **Desenvolvido por Caio Abreu**
