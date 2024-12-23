@@ -64,6 +64,7 @@ sudo chown postgres:postgres /var/lib/postgresql
 
 # Executar os scripts de criação do banco de dados Bacula
 echo "Executando os scripts para configurar o banco de dados PostgreSQL..."
+gpasswd -a postgres root
 sudo -u postgres bash -c "/etc/bacula/scripts/create_postgresql_database"
 sudo -u postgres bash -c "/etc/bacula/scripts/make_postgresql_tables"
 sudo -u postgres bash -c "/etc/bacula/scripts/grant_postgresql_privileges"
