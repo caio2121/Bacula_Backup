@@ -63,8 +63,8 @@ sudo gpasswd -a postgres root
 sudo gpasswd -a bacula root
 
 #echo "Movendo os arquivos de configuração para os locais corretos..."
-#sudo mv /usr/src/backup/Bacula-Backup/bconsole.modelo.conf /etc/bacula/bconsole.conf
-#sudo mv /usr/src/backup/Bacula-Backup/bacula-dir.modelo.conf /etc/bacula/bacula-dir.conf
+sudo mv /usr/src/backup/Bacula-Backup/bconsole.modelo.conf /etc/bacula/bconsole.conf
+sudo mv /usr/src/backup/Bacula-Backup/bacula-dir.modelo.conf /etc/bacula/bacula-dir.conf
 
 echo "Garantindo permissões nos diretórios e arquivos do Bacula..."
 sudo chown -R bacula:bacula /etc/bacula /var/lib/bacula /var/log/bacula
@@ -73,12 +73,13 @@ sudo chown -R bacula:bacula /etc/bacula /var/lib/bacula /var/log/bacula
 echo "Executando os scripts para configurar o banco de dados PostgreSQL..."
 sudo -u postgres bash -c "
 psql <<EOF
-CREATE USER bacula WITH PASSWORD '';
+CREATE USER bacula WITH PASSWORD 'mudar123';
+ALTER ROLE bacula WITH SUPERUSER;
 EOF
 "
-sudo -u postgres bash -c "/etc/bacula/scripts/create_postgresql_database"
-sudo -u postgres bash -c "/etc/bacula/scripts/make_postgresql_tables"
-sudo -u postgres bash -c "/etc/bacula/scripts/grant_postgresql_privileges"
+sudo -u bacula bash -c "/etc/bacula/scripts/create_postgresql_database"
+sudo -u bacula bash -c "/etc/bacula/scripts/make_postgresql_tables"
+sudo -u bacula bash -c "/etc/bacula/scripts/grant_postgresql_privileges"
 
 # Iniciar e habilitar o Bacula Director
 echo "Habilitando e iniciando o Bacula Director..."
