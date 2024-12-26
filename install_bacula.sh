@@ -53,20 +53,20 @@ make install-autostart
 
 # Criar o usuário Bacula e definir permissões
 echo "Criando o usuário bacula e configurando permissões..."
-sudo useradd -m -s /bin/bash bacula
+useradd -m -s /bin/bash bacula
 
 # Configuração do PostgreSQL
 echo "Configurando o PostgreSQL para o Bacula Director..."
 # Dar permissões ao usuário postgres
-sudo gpasswd -a postgres root
-sudo gpasswd -a bacula root
+gpasswd -a postgres root
+gpasswd -a bacula root
 
 #echo "Movendo os arquivos de configuração para os locais corretos..."
-sudo mv /usr/src/backup/Bacula-Backup/bconsole.modelo.conf /etc/bacula/bconsole.conf
-sudo mv /usr/src/backup/Bacula-Backup/bacula-dir.modelo.conf /etc/bacula/bacula-dir.conf
+mv /usr/src/backup/Bacula-Backup/bconsole.modelo.conf /etc/bacula/bconsole.conf
+mv /usr/src/backup/Bacula-Backup/bacula-dir.modelo.conf /etc/bacula/bacula-dir.conf
 
 echo "Garantindo permissões nos diretórios e arquivos do Bacula..."
-sudo chown -R bacula:bacula /etc/bacula /var/lib/bacula /var/log/bacula
+chown -R bacula:bacula /etc/bacula /var/lib/bacula /var/log/bacula
 
 # Executar os scripts de criação do banco de dados Bacula
 echo "Executando os scripts para configurar o banco de dados PostgreSQL..."
@@ -83,15 +83,15 @@ sudo -u bacula bash -c "/etc/bacula/scripts/grant_postgresql_privileges"
 
 # Substituindo 'peer' por 'md5' no arquivo pg_hba.conf
 echo "Substituindo 'peer' por 'md5' no arquivo /etc/postgresql/13/main/pg_hba.conf..."
-sudo sed -i 's/peer/md5/g' /etc/postgresql/13/main/pg_hba.conf
+sed -i 's/peer/md5/g' /etc/postgresql/13/main/pg_hba.conf
 
 # Reiniciar o PostgreSQL
 echo "Reiniciando o PostgreSQL..."
-sudo systemctl restart postgresql
+systemctl restart postgresql
 
 # Iniciar e habilitar o Bacula Director
 echo "Habilitando e iniciando o Bacula Director..."
-sudo systemctl enable bacula-dir
-sudo systemctl restart bacula-dir
+systemctl enable bacula-dir
+systemctl restart bacula-dir
 
 # Instalação e configuração do Bacula Director concluídas."
