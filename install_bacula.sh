@@ -61,13 +61,6 @@ echo "Configurando o PostgreSQL para o Bacula Director..."
 gpasswd -a postgres root
 gpasswd -a bacula root
 
-#echo "Movendo os arquivos de configuração para os locais corretos..."
-mv /usr/src/backup/Bacula-Backup/bconsole.modelo.conf /etc/bacula/bconsole.conf
-mv /usr/src/backup/Bacula-Backup/bacula-dir.modelo.conf /etc/bacula/bacula-dir.conf
-
-echo "Garantindo permissões nos diretórios e arquivos do Bacula..."
-chown -R bacula:bacula /etc/bacula /var/lib/bacula /var/log/bacula
-
 # Executar os scripts de criação do banco de dados Bacula
 echo "Executando os scripts para configurar o banco de dados PostgreSQL..."
 sudo -u postgres bash -c "
@@ -80,6 +73,13 @@ EOF
 sudo -u bacula bash -c "/etc/bacula/scripts/create_postgresql_database"
 sudo -u bacula bash -c "/etc/bacula/scripts/make_postgresql_tables"
 sudo -u bacula bash -c "/etc/bacula/scripts/grant_postgresql_privileges"
+
+#echo "Movendo os arquivos de configuração para os locais corretos..."
+mv /usr/src/backup/Bacula-Backup/bconsole.modelo.conf /etc/bacula/bconsole.conf
+mv /usr/src/backup/Bacula-Backup/bacula-dir.modelo.conf /etc/bacula/bacula-dir.conf
+
+echo "Garantindo permissões nos diretórios e arquivos do Bacula..."
+chown -R bacula:bacula /etc/bacula /var/lib/bacula /var/log/bacula
 
 # Substituindo 'peer' por 'md5' no arquivo pg_hba.conf
 echo "Substituindo 'peer' por 'md5' no arquivo /etc/postgresql/13/main/pg_hba.conf..."
