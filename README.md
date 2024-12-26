@@ -13,7 +13,7 @@ Este repositório contém scripts e configurações para automação, gerenciame
 
 - **Bacula**: Sistema de backup de código aberto, amplamente utilizado e confiável para o gerenciamento de dados.
 - **Shell Scripts**: Utilização de scripts em Bash para automação das tarefas de backup.
-- **Cron**: Ferramenta para agendamento de tarefas no Linux, usada para executar backups automaticamente.
+
 
 ## 📖 Passo a Passo para Utilização
 
