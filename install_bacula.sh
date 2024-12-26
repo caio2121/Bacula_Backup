@@ -77,6 +77,10 @@ ALTER ROLE bacula WITH SUPERUSER;
 EOF
 "
 
+sudo -u bacula bash -c "/etc/bacula/scripts/create_postgresql_database"
+sudo -u bacula bash -c "/etc/bacula/scripts/make_postgresql_tables"
+sudo -u bacula bash -c "/etc/bacula/scripts/grant_postgresql_privileges"
+
 # Substituindo 'peer' por 'md5' no arquivo pg_hba.conf
 echo "Substituindo 'peer' por 'md5' no arquivo /etc/postgresql/13/main/pg_hba.conf..."
 sudo sed -i 's/peer/md5/g' /etc/postgresql/13/main/pg_hba.conf
@@ -84,11 +88,6 @@ sudo sed -i 's/peer/md5/g' /etc/postgresql/13/main/pg_hba.conf
 # Reiniciar o PostgreSQL
 echo "Reiniciando o PostgreSQL..."
 sudo systemctl restart postgresql
-
-
-sudo -u bacula bash -c "/etc/bacula/scripts/create_postgresql_database"
-sudo -u bacula bash -c "/etc/bacula/scripts/make_postgresql_tables"
-sudo -u bacula bash -c "/etc/bacula/scripts/grant_postgresql_privileges"
 
 # Iniciar e habilitar o Bacula Director
 echo "Habilitando e iniciando o Bacula Director..."
