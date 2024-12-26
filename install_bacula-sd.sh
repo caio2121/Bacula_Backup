@@ -62,3 +62,59 @@ echo "Copiando arquivos de configuração para o diretório do Bacula..."
 mv "$config_repo_dir/bacula-sd.modelo.conf" /etc/bacula/bacula-sd.conf
 
 echo "Instalação e configuração do Bacula Storage Daemon concluídas."
+
+
+# Abra o arquivo de configuração no servidor do bacula.
+# vim /etc/bacula/bacula-dir.conf
+
+# No bacula-dir.conf, insira o seguinte:
+
+# Definindo as configurações do Storage no servidor Bacula.
+# Storage {  
+#   Name = "baculasd"  # Nome do Storage (Deve ser o mesmo nome no arquivo bacula-sd.conf no storage).
+#   SdPort = 9103  # Porta padrão de comunicação do bacula com o storage.
+#   Address = "0.0.0.0"  # IP do Storage.
+#   Password = "BACULA-SD-PASSWORD"  # Senha que o Usuário bacula usa para acessar o storage.
+#   Device = "VirtualAutochanger-exemplo"  # Nome do Autochanger (Deve ser o mesmo nome no arquivo bacula-sd.conf no storage).
+#   MediaType = "File1"  # Tipo de mídia (Deve ser o mesmo nome no arquivo bacula-sd.conf no storage).
+#   Autochanger = "yes"  # Permite o autochanger.
+#   MaximumConcurrentJobs = 10  # Libera Jobs simultâneos.
+# }
+
+# Configuração do Bacula-Sd
+# Abra o arquivo de configuração no servidor do Storage.
+# vim /etc/bacula/bacula-sd.conf
+
+# No bacula-sd.conf, insira o seguinte:
+
+# Definindo as configurações do Autochanger.
+# Autochanger {  
+#   Name = "VirtualAutochanger-exemplo"  # Nome do Autochanger (Deve ser o mesmo nome no arquivo bacula-dir.conf no servidor do bacula).
+#   Changer Command= "/dev/null"  # Comando Trocador (Para backups em disco, o comando deve ser "/dev/null").
+#   Changer Device= "/dev/null"  # Dispositivo Trocador (Para backups em disco, o dispositivo deve ser "/dev/null").
+#   Device = FileChgr1-Dev1, FileChgr1-Dev2, ...  # Devices que esse autochanger pode usar.
+# }
+
+# Definição dos Devices que podem ser usados por autochangers.
+# Device {  
+#   Name = FileChgr1-Dev1  # Nome do Device.
+#   Device Type = File  # Tipo de device.
+#   Media Type = File1  # Tipo de mídia (Deve ser o mesmo nome no arquivo bacula-dir.conf no servidor do bacula).
+#   Archive Device = /backup/bacula  # Local onde os arquivos do backup serão salvos. (Pode ser o mesmo em todos os devices).
+#   LabelMedia = yes  # Permite que o bacula rotule mídias não rotuladas.
+#   Random Access = yes  # Permite que o bacula acesse volumes de forma aleatória.
+#   AutomaticMount = yes  # Permite que o bacula monte volumes automaticamente.
+#   RemovableMedia = yes  # Permite que o bacula remova mídias.
+#   AlwaysOpen = yes  # Sempre aberto.
+#   Autochanger = yes  # Permite o Autochanger.
+#   Drive Index = 0  # Index do device (Deve ser diferente em cada Device).
+#   Maximum Concurrent Jobs = 10  # Permite Jobs simultâneos.
+# }
+
+# Definição do segundo Device que pode ser usado pelos autochangers.
+# Device {  
+#   Name = FileChgr1-Dev2  # Nome do segundo Device.
+#   ...  # Outras configurações podem ser adicionadas aqui.
+#   ...  # Continuação de outras configurações de dispositivos.
+#   ...  # Continuação do arquivo de configuração.
+# }
