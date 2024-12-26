@@ -53,18 +53,29 @@ make install-autostart
 
 # Criar o usuário Bacula e definir permissões
 echo "Criando o usuário bacula e configurando permissões..."
-sudo useradd -r -s /bin/false bacula
+sudo useradd -m -s /bin/bash bacula
 sudo chown -R bacula:bacula /var/lib/bacula
 
 # Configuração do PostgreSQL
 echo "Configurando o PostgreSQL para o Bacula Director..."
 # Dar permissões ao usuário postgres
-sudo chmod 700 /var/lib/postgresql
-sudo chown postgres:postgres /var/lib/postgresql
+sudo gpasswd -a postgres root
+sudo gpasswd -a bacula root
+
+#echo "Movendo os arquivos de configuração para os locais corretos..."
+#sudo mv /usr/src/backup/Bacula-Backup/bconsole.modelo.conf /etc/bacula/bconsole.conf
+#sudo mv /usr/src/backup/Bacula-Backup/bacula-dir.modelo.conf /etc/bacula/bacula-dir.conf
+
+echo "Garantindo permissões nos diretórios e arquivos do Bacula..."
+sudo chown -R bacula:bacula /etc/bacula /var/lib/bacula /var/log/bacula
 
 # Executar os scripts de criação do banco de dados Bacula
 echo "Executando os scripts para configurar o banco de dados PostgreSQL..."
-gpasswd -a postgres root
+sudo -u postgres bash -c "
+psql <<EOF
+CREATE USER bacula WITH PASSWORD '';
+EOF
+"
 sudo -u postgres bash -c "/etc/bacula/scripts/create_postgresql_database"
 sudo -u postgres bash -c "/etc/bacula/scripts/make_postgresql_tables"
 sudo -u postgres bash -c "/etc/bacula/scripts/grant_postgresql_privileges"
