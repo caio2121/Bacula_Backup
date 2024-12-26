@@ -71,7 +71,7 @@ Siga os passos abaixo para preparar o ambiente e utilizar os scripts:
 
 ### ⚙️ Requisitos e Compatibilidade
 
-- O script foi testado no **Debian 12**.
+- O script foi testado no **Debian 11**.
 - Utiliza a versão **15.0.2** do Bacula e **11** do Baculum.
 
 ## 🤝 Contribuições
