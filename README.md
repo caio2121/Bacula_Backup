@@ -52,17 +52,17 @@ Siga os passos abaixo para preparar o ambiente e utilizar os scripts:
 
 7. Torne o script de instalação executável:
    ```bash
-   chmod +x install_bacula.sh
+   chmod +x install_bacula.sh && chmod +x install_baculum.sh
    ```
 
 8. Personalize as configurações: **Antes de executar o script**, edite os arquivos .modelo para ajustar as senhas e variáveis sensíveis conforme suas necessidades.
 
 9. Execute o script de instalação para configurar o Bacula:
    ```bash
-   ./install_bacula.sh
+   ./install_bacula.sh %% ./install_baculum.sh
    ```
 
-10. Após a instalação, verifique se os serviços estão funcionando corretamente e ajuste as configurações, se necessário.
+10. Após a instalação, verifique se os serviços estão funcionando corretamente e ajuste as configurações, se necessário. (senha do baculum: admin)
 
 ### ⚙️ Requisitos e Compatibilidade
 
