@@ -13,7 +13,7 @@ sudo apt update && sudo apt install -y \
     tar
 
 # Variáveis
-download_url="https://www.bacula.org/download/11487/?tmstv=1731045036"
+download_url="https://sinalbr.dl.sourceforge.net/project/bacula/bacula/15.0.2/bacula-15.0.2.tar.gz"
 version="15.0.2"
 source_dir="/usr/src"
 bacula_tar="bacula-${version}.tar.gz"
