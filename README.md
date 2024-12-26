@@ -1,6 +1,6 @@
 # Bacula e Backup Scripts
 
-Este repositório contém scripts e configurações para automação, gerenciamento e monitoramento de backups utilizando o **Bacula**. O script principal automatiza a instalação e configuração do Bacula Director com suporte ao **PostgreSQL**, incluindo ajustes em permissões, criação de usuários e configuração do banco de dados.
+Este repositório contém scripts de automação para instalação e configuração do **Bacula e Baculum**. O script principal automatiza a instalação do **Bacula 15.0.2**, configurando o Bacula Director com suporte ao PostgreSQL, incluindo ajustes de permissões, criação de usuários e configuração do banco de dados.
 
 ## 🚀 Funcionalidades
 
