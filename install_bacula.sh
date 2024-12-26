@@ -95,8 +95,4 @@ echo "Habilitando e iniciando o Bacula Director..."
 sudo systemctl enable bacula-dir
 sudo systemctl restart bacula-dir
 
-# Configuração do Bacula Director
-echo "Editando o arquivo de configuração do Bacula Director..."
-sudo vim /etc/bacula/bacula-dir.conf
-
-echo "Instalação e configuração do Bacula Director concluídas."
+# Instalação e configuração do Bacula Director concluídas."
