@@ -75,8 +75,8 @@ sudo -u bacula bash -c "/etc/bacula/scripts/make_postgresql_tables"
 sudo -u bacula bash -c "/etc/bacula/scripts/grant_postgresql_privileges"
 
 #echo "Movendo os arquivos de configuração para os locais corretos..."
-mv /usr/src/backup/Bacula-Backup/bconsole.modelo.conf /etc/bacula/bconsole.conf
-mv /usr/src/backup/Bacula-Backup/bacula-dir.modelo.conf /etc/bacula/bacula-dir.conf
+mv /usr/src/backup/Bacula_Backup/bconsole.modelo.conf /etc/bacula/bconsole.conf
+mv /usr/src/backup/Bacula_Backup/bacula-dir.modelo.conf /etc/bacula/bacula-dir.conf
 
 echo "Garantindo permissões nos diretórios e arquivos do Bacula..."
 chown -R bacula:bacula /etc/bacula /var/lib/bacula /var/log/bacula
