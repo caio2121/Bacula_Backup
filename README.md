@@ -4,7 +4,7 @@ Este repositório contém scripts e configurações para automação, gerenciame
 
 ## 🚀 Funcionalidades
 
-- **Configuração do Bacula**: Scripts para configurar o Bacula Director, Storage Daemon e File Daemon, otimizando a implementação do sistema de backup.
+- **Configuração do Bacula**: Scripts para configurar o Bacula Director otimizando a implementação do sistema de backup.
 - **Automação de Backup**: Agendamento automatizado de backups completos, incrementais e diferenciais para garantir a eficiência do processo de backup.
 - **Monitoramento de Backup**: Ferramentas para monitorar a execução dos backups e gerar alertas em caso de falhas ou problemas de execução.
 - **Relatórios Detalhados**: Geração de relatórios sobre o status dos backups, incluindo informações sobre sucesso, falha e dados transferidos.
@@ -60,6 +60,11 @@ Siga os passos abaixo para preparar o ambiente e utilizar os scripts:
    ```
 
 9. Após a instalação, configure corretamente as senhas utilizadas no código para garantir a segurança e o funcionamento adequado do sistema.
+
+### ⚙️ Requisitos e Compatibilidade
+
+- O script foi testado no **Debian 12**.
+- Utiliza a versão **15.0.2** do Bacula.
 
 ## 🤝 Contribuições
 
