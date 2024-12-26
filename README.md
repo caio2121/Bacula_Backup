@@ -1,19 +1,20 @@
 # Bacula e Backup Scripts
 
-Este repositório contém scripts e configurações para automação, gerenciamento e monitoramento de backups utilizando o **Bacula**. O objetivo é fornecer uma solução prática para configurar, agendar e verificar backups de maneira eficiente, garantindo a integridade e a segurança dos dados.
+Este repositório contém scripts e configurações para automação, gerenciamento e monitoramento de backups utilizando o **Bacula**. O script principal automatiza a instalação e configuração do Bacula Director com suporte ao **PostgreSQL**, incluindo ajustes em permissões, criação de usuários e configuração do banco de dados.
 
 ## 🚀 Funcionalidades
 
-- **Configuração do Bacula**: Scripts para configurar o Bacula Director otimizando a implementação do sistema de backup.
-- **Automação de Backup**: Agendamento automatizado de backups completos, incrementais e diferenciais para garantir a eficiência do processo de backup.
-- **Monitoramento de Backup**: Ferramentas para monitorar a execução dos backups e gerar alertas em caso de falhas ou problemas de execução.
-- **Relatórios Detalhados**: Geração de relatórios sobre o status dos backups, incluindo informações sobre sucesso, falha e dados transferidos.
+- **Configuração do Bacula Director**: Instalação e configuração automática do Bacula Director com suporte ao PostgreSQL.
+- **Criação de Usuários e Banco de Dados**: Configuração automatizada do PostgreSQL, criação de usuários, banco de dados e permissões necessárias para o funcionamento do Bacula.
+- **Ajustes de Permissões**: Configuração de permissões para diretórios e arquivos relacionados ao Bacula, garantindo o funcionamento seguro.
+- **Automação de Backup**: Scripts para agendar backups e otimizar processos de gestão de dados.
+- **Monitoramento e Relatórios**: Ferramentas para verificar a execução dos backups e gerar relatórios detalhados sobre o status das operações.
 
 ## 🛠 Tecnologias Usadas
 
 - **Bacula**: Sistema de backup de código aberto, amplamente utilizado e confiável para o gerenciamento de dados.
-- **Shell Scripts**: Utilização de scripts em Bash para automação das tarefas de backup.
-
+- **PostgreSQL**: Banco de dados relacional utilizado para armazenar as informações do Bacula.
+- **Shell Scripts**: Utilização de scripts em Bash para automação das tarefas de instalação e configuração.
 
 ## 📖 Passo a Passo para Utilização
 
@@ -54,12 +55,14 @@ Siga os passos abaixo para preparar o ambiente e utilizar os scripts:
    chmod +x install_bacula.sh
    ```
 
-8. Execute o script de instalação para configurar o Bacula:
+8. Personalize as configurações: **Antes de executar o script**, edite os arquivos .modelo para ajustar as senhas e variáveis sensíveis conforme suas necessidades.
+
+9. Execute o script de instalação para configurar o Bacula:
    ```bash
    ./install_bacula.sh
    ```
 
-9. Após a instalação, configure corretamente as senhas utilizadas no código para garantir a segurança e o funcionamento adequado do sistema.
+10. Após a instalação, verifique se os serviços estão funcionando corretamente e ajuste as configurações, se necessário.
 
 ### ⚙️ Requisitos e Compatibilidade
 
